@@ -1,0 +1,22 @@
+spring:
+  profiles:
+    active: ${APP_ACTIVE:prd}
+  codec:
+    max-in-memory-size: 1024MB
+  cloud:
+    inetutils:
+      preferred-networks:
+        - 192
+    nacos:
+      server-addr: ${NACOS_SERVER_URL:server:58848}
+      username: nacos
+      password: aENC({RSA2048}ArsAEVbW7Im5bOP1+/MVRSUVzKoj3SjvETdGEn4UclaGzx0kYHbfpyBgrkOHxouMXZSjzm4lFgRXRWXPaFvpT3rFtS604oFH+0KgYV6JHwMAYUKI8URRkqJE8MgS7WAluCgODgpFDTtX64vWHHJ5phO+PVuyQzrfxBCyedRuA632xHxdeWylYCXdH3Ma+D7+WdvhLfnFkKPUKE/svGXtR1p8zFK61C9FKum6sqv/Q2a/QZw0hgE5j+/DfqZp+4MRTS/QBpdPZCz0RmR1pDDRr6L2q+gbxk8lxSU/NxJ6i64KLQus9f7BaWHZt9SOsHR9ymr+PnKlfCW/gsVTMQ5Mfw==)
+      discovery:
+        group: ${NACOS_GROUP_DISCOVERY:TEMPLATE_GROUP}
+      config:
+        group: ${NACOS_GROUP_CONFIG:TEMPLATE_GROUP}
+        file-extension: yml
+        shared-configs:
+          - data-id: application-shared-${spring.profiles.active}.yml
+            group: ${NACOS_GROUP_CONFIG:TEMPLATE_GROUP}
+            refresh: true

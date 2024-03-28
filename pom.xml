@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.lrenyi</groupId>
+        <artifactId>template-dependencies</artifactId>
+        <version>2.1.1</version>
+    </parent>
+    <artifactId>template.sample</artifactId>
+    <packaging>pom</packaging>
+    <version>2.1.0</version>
+
+    <properties>
+        <spotbugs-maven-plugin.version>4.8.1.0</spotbugs-maven-plugin.version>
+        <maven-checkstyle-plugin.version>3.3.0</maven-checkstyle-plugin.version>
+        <maven-site-plugin.version>3.12.1</maven-site-plugin.version>
+    </properties>
+
+    <modules>
+        <module>service-dp</module>
+        <module>single-application</module>
+        <module>service-gateway</module>
+        <module>service-admin</module>
+        <module>service-admin-api</module>
+    </modules>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>${maven-site-plugin.version}</version>
+                <configuration>
+                    <locales>en_US</locales>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
+</project>
