@@ -1,0 +1,46 @@
+server:
+  port: 8081
+spring:
+  profiles:
+    active: prd
+  application:
+    name: admin
+  thymeleaf:
+    cache: false
+  mvc:
+    static-path-pattern: /static/**
+  security:
+    oauth2:
+      authorization-server:
+        client:
+          default-client-id:
+            registration:
+              client-id: default-client-id
+              client-secret: "{default}bbc3996c64ae76003d6c034cb3fa7a3e51dc624ee097681e39ec8f42"
+              client-authentication-methods:
+                - client_secret_post
+                - client_secret_get
+              authorization-grant-types:
+                - authorization_code
+                - authorization_password
+                - client_credentials
+              scopes:
+                - openid
+              redirect-uris:
+                - http://localhost/
+              post-logout-redirect-uris:
+                - http://localhost/logout
+            token:
+              access-token-time-to-live: 60m
+              access-token-format: reference
+app:
+  config:
+    security:
+      opaque-token:
+        enable: true
+        introspection-uri: http://127.0.0.1:8081/opaque/token/check
+      local-jwt-public-key: false
+      net-jwt-public-key-domain: http://127.0.0.1:8081/
+      authorization-type: redis
+    redis:
+      key-prefix: dmp

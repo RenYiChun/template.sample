@@ -1,0 +1,11 @@
+app:
+  config:
+    security:
+      permit-urls: /not/apply/security,/password/encoder,/callback/oauth2/code
+      enable: true
+
+logging:
+  level:
+    org.springframework.security: trace
+test:
+  password: aENC(@#*H17RSA2048lL9w3JpVcMIUGqXBiZDG4O3LwCssxeUEjbA53oAuZIOC3vxgiwZeLw2Cpt5JVClg7kLvYYdbcj0bAAY5GFEwVxKd4KsTUlbmzUiRbJfJJg2+tcRFS8BY+XBFhqTT4gfPP4rFQnesHuWTHmN+MyrpMRup8wvdhzrdFVP/IOeWACOOKWM8FCILMcaDlT76QcvR1KRh0eOAJzX1A6EgMyRQZbtvNGWDk5eGjIQpiuoz7H6I63sGGKM5MqXOnd3wGADu8I2XLhydUEKvPgJcgpxamZRK6gUMV4w36uCvhrflBbRa4GVoqigErlO5DAl1rWcMcUmm+twmyvHPUXVcsfxjRg==@#*H)

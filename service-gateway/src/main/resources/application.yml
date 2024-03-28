@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: GateWay
+  cloud:
+    gateway:
+      routes:
+        - id: admin
+          uri: lb://admin
+          predicates:
+            - Path=/admin/**
+          filters:
+            - StripPrefix=1
+        - id: DataProcess
+          uri: lb://DataProcess
+          predicates:
+            - Path=/dp/**
+          filters:
+            - StripPrefix=1
+server:
+  port: 80
+sample:
+  security:
+    must-have-header: Authorization
