@@ -1,4 +1,6 @@
 spring:
+  profiles:
+    active: prd
   codec:
     max-in-memory-size: 1024MB
   cloud:
@@ -10,13 +12,13 @@ spring:
       username: ${NACOS_USER_NAME:nacos}
       password: ${NACOS_PASSWORD:}
       discovery:
-        group: ${NACOS_GROUP_DISCOVERY:DEFAULT_GROUP}
+        group: ${NACOS_GROUP_DISCOVERY:TEMPLATE_GROUP}
       config:
-        group: ${NACOS_GROUP_CONFIG:DEFAULT_GROUP}
+        group: ${NACOS_GROUP_CONFIG:TEMPLATE_GROUP}
         file-extension: yml
         shared-configs:
           - data-id: application-shared-${spring.profiles.active}.yml
-            group: ${NACOS_GROUP_CONFIG:DEFAULT_GROUP}
+            group: ${NACOS_GROUP_CONFIG:TEMPLATE_GROUP}
             refresh: true
 logging:
   config: classpath:logback.xml

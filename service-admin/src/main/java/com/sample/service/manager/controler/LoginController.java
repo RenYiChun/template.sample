@@ -1,6 +1,7 @@
 package com.sample.service.manager.controler;
 
 import com.lrenyi.oauth2.service.TemplateOauthService;
+import com.lrenyi.oauth2.service.oauth2.password.LoginNameType;
 import com.lrenyi.template.core.config.redis.TemplateRedisTemplate;
 import com.lrenyi.template.core.util.OAuth2Constant;
 import com.lrenyi.template.core.util.Result;
@@ -94,7 +95,7 @@ public class LoginController {
         return templateOauthService.login(body, header);
     }
     
-    @GetMapping("/logout")
+    @GetMapping("/user/logout")
     @Log(object = OperationObject.LOGIN_LOGOUT, operation = OperationEnum.LOGIN)
     public Result<?> logout(HttpServletRequest request) {
         HttpHeaders header = new HttpHeaders();
@@ -112,9 +113,11 @@ public class LoginController {
         String password = parameters.get("password");
         body.put("username", Collections.singletonList(username));
         body.put("password", Collections.singletonList(password));
-        body.put(OAuth2Constant.CLIENT_ID_FIELD_KEY,
-                 Collections.singletonList("default-client-id")
+        body.put(OAuth2Constant.LOGIN_USER_NAME_TYPE_KEY,
+                 Collections.singletonList(LoginNameType.USER_NAME.getCode())
         );
+        body.put(OAuth2Constant.CLIENT_ID_FIELD_KEY,
+                 Collections.singletonList("default-client-id"));
         body.put(OAuth2Constant.CLIENT_SECRET_FIELD_KEY, Collections.singletonList("app.template"));
         body.put(OAuth2Constant.GRANT_TYPE_FIELD_KEY,
                  Collections.singletonList(OAuth2Constant.GRANT_TYPE_PASSWORD)

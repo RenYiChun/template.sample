@@ -14,6 +14,11 @@ public class TestFeignController {
     @Resource
     private DictionaryService dictionaryService;
     
+    @GetMapping(value = "/dict/query/all/without/login")
+    public Result<List<DictionaryVo>> findDictionaryByKeyNotLogin() {
+        return dictionaryService.findDictionaryAll();
+    }
+    
     @GetMapping(value = "/dict/query/all")
     public Result<List<DictionaryVo>> findDictionaryByKey() {
         return dictionaryService.findDictionaryAll();

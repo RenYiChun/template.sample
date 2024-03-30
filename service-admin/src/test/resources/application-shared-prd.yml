@@ -56,6 +56,13 @@ app:
     security:
       enable: true
       opaque-token:
-        enable: false
+        enable: true
         introspection-uri: http://127.0.0.1:8081/opaque/token/check
-      permit-urls: /user/login,/credentials/login
+      local-jwt-public-key: false
+      net-jwt-public-key-domain: http://127.0.0.1:8081/
+      authorization-type: redis
+      permit-urls:
+        admin: /user/login,/credentials/login,/getCode
+        DataProcess: /dict/query/all/without/login
+    redis:
+      key-prefix: dmp
