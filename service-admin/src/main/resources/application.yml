@@ -1,14 +1,9 @@
 server:
   port: 8081
 spring:
-  profiles:
-    active: prd
-  application:
-    name: admin
-  thymeleaf:
-    cache: false
-  mvc:
-    static-path-pattern: /static/**
+  cloud:
+    compatibility-verifier:
+      enabled: false
   security:
     oauth2:
       authorization-server:

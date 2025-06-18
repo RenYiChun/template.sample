@@ -1,11 +1,12 @@
 package com.sample.service.manager.api.fallback;
 
-import com.sample.service.manager.api.DictionaryService;
+import com.sample.service.manager.api.UserInfoService;
 import org.springframework.cloud.openfeign.FallbackFactory;
 
-public class UserInfoServiceFallback implements FallbackFactory<DictionaryService> {
+public class UserInfoServiceFallback implements FallbackFactory<UserInfoService> {
+    
     @Override
-    public DictionaryService create(Throwable cause) {
+    public UserInfoService create(Throwable cause) {
         return null;
     }
 }

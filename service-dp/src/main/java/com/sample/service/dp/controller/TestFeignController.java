@@ -1,8 +1,7 @@
 package com.sample.service.dp.controller;
 
 import com.lrenyi.template.core.util.Result;
-import com.sample.service.manager.api.DictionaryService;
-import com.sample.service.manager.api.vo.DictionaryVo;
+import com.sample.service.manager.api.UserInfoService;
 import jakarta.annotation.Resource;
 import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,15 +11,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestFeignController {
     
     @Resource
-    private DictionaryService dictionaryService;
+    private UserInfoService userInfoService;
     
     @GetMapping(value = "/dict/query/all/without/login")
-    public Result<List<DictionaryVo>> findDictionaryByKeyNotLogin() {
-        return dictionaryService.findDictionaryAll();
+    public Result<String> findDictionaryByKeyNotLogin() {
+        return userInfoService.findUserNameByToken("");
     }
     
     @GetMapping(value = "/dict/query/all")
-    public Result<List<DictionaryVo>> findDictionaryByKey() {
-        return dictionaryService.findDictionaryAll();
+    public Result<String> findDictionaryByKey() {
+        return userInfoService.findUserNameByToken("");
     }
 }

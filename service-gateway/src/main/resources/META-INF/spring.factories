@@ -1,1 +1,0 @@
-org.springframework.boot.BootstrapRegistryInitializer=com.sample.service.gateway.config.BeforeBootstrapInitializer

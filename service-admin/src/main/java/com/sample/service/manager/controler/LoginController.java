@@ -5,9 +5,6 @@ import com.lrenyi.oauth2.service.oauth2.password.LoginNameType;
 import com.lrenyi.template.core.config.redis.TemplateRedisTemplate;
 import com.lrenyi.template.core.util.OAuth2Constant;
 import com.lrenyi.template.core.util.Result;
-import com.lrenyi.template.web.function.Log;
-import com.lrenyi.template.web.function.log.OperationEnum;
-import com.lrenyi.template.web.function.log.OperationObject;
 import com.sample.service.manager.util.VerifyCodeUtils;
 import jakarta.annotation.Resource;
 import jakarta.servlet.ServletOutputStream;
@@ -80,7 +77,6 @@ public class LoginController {
     }
     
     @PostMapping("/credentials/login")
-    @Log(object = OperationObject.LOGIN_LOGOUT, operation = OperationEnum.LOGIN)
     public Result<?> devLogin() {
         HttpHeaders header = new HttpHeaders();
         MultiValueMap<String, String> body = new LinkedMultiValueMap<>();
@@ -96,7 +92,6 @@ public class LoginController {
     }
     
     @GetMapping("/user/logout")
-    @Log(object = OperationObject.LOGIN_LOGOUT, operation = OperationEnum.LOGIN)
     public Result<?> logout(HttpServletRequest request) {
         HttpHeaders header = new HttpHeaders();
         header.add("Authorization", request.getHeader("Authorization"));
@@ -104,7 +99,6 @@ public class LoginController {
     }
     
     @PostMapping("/user/login")
-    @Log(object = OperationObject.LOGIN_LOGOUT, operation = OperationEnum.LOGIN)
     public Result<?> login(@RequestBody Map<String, String> parameters) {
         HttpHeaders header = new HttpHeaders();
         MultiValueMap<String, String> body = new LinkedMultiValueMap<>();
