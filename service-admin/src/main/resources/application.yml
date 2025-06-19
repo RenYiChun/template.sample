@@ -1,6 +1,8 @@
 server:
   port: 8081
 spring:
+  application:
+    name: service-admin
   cloud:
     compatibility-verifier:
       enabled: false
@@ -36,6 +38,8 @@ app:
         introspection-uri: http://127.0.0.1:8081/opaque/token/check
       local-jwt-public-key: false
       net-jwt-public-key-domain: http://127.0.0.1:8081/
-      authorization-type: redis
-    redis:
-      key-prefix: dmp
+      authorization-type: memory
+      permit-urls:
+        service-admin:
+          - /user/login
+          - /user/query/all/without/login

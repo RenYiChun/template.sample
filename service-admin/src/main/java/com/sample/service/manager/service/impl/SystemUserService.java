@@ -3,6 +3,7 @@ package com.sample.service.manager.service.impl;
 import com.sample.service.manager.database.entity.SysUser;
 import com.sample.service.manager.service.ISystemUserService;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.server.authorization.OAuth2Authorization;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 public class SystemUserService implements ISystemUserService {
     
     private OAuth2AuthorizationService oAuth2AuthorizationService;
+    private SysUser sysUser;
     
     @Autowired
     public void setoAuth2AuthorizationService(OAuth2AuthorizationService oAuth2AuthorizationService) {
@@ -21,12 +23,12 @@ public class SystemUserService implements ISystemUserService {
     
     @Override
     public void saveOrUpdate(SysUser sysUser) {
-    
+        this.sysUser = sysUser;
     }
     
     @Override
     public List<? extends SysUser> findAll() {
-        return new ArrayList<>();
+        return Collections.singletonList(sysUser);
     }
     
     @Override

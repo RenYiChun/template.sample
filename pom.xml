@@ -20,7 +20,6 @@
     <modules>
         <module>service-dp</module>
         <module>single-application</module>
-        <module>service-gateway</module>
         <module>service-admin</module>
         <module>service-admin-api</module>
     </modules>
